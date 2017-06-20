@@ -667,11 +667,11 @@
     "annotations": [
       {
         "name": "GitHubRepositoryUrl",
-        "value": "myrepository12"
+        "value": "test"
       },
       {
         "name": "Owner",
-        "value": ""
+        "value": "up-in-smoke"
       }
     ]
   }
