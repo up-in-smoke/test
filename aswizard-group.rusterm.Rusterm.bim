@@ -671,7 +671,9 @@
       },
       {
         "name": "Owner",
-        "value": "up-in-smoke"
+        "value": {
+          "login": "up-in-smoke"
+        }
       }
     ]
   }
