@@ -4,7 +4,7 @@
   "compatibilityLevel": 1200,
   "model": {
     "name": "Rusterm",
-    "description": "A Tabular data model at the 1200 compatibility levelcommit12.",
+    "description": "A Tabular data model at the 1200 compatibility levelcommit123.",
     "defaultMode": "directQuery",
     "culture": "en-US",
     "dataSources": [
