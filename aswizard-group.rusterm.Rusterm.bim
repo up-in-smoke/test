@@ -4,7 +4,7 @@
   "compatibilityLevel": 1200,
   "model": {
     "name": "Rusterm",
-    "description": "A Tabular data model at the 1200 compatibility levelcommit1.",
+    "description": "A Tabular data model at the 1200 compatibility levelcommit12.",
     "defaultMode": "directQuery",
     "culture": "en-US",
     "dataSources": [
@@ -30,28 +30,36 @@
           {
             "name": "NameStyle",
             "dataType": "boolean",
+            "isHidden": true,
             "isNullable": false,
             "sourceColumn": "NameStyle",
-            "displayOrdinal": 1
+            "displayOrdinal": 1,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "Title",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Title",
-            "displayOrdinal": 2
+            "displayOrdinal": 2,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "FirstName",
             "dataType": "string",
+            "isHidden": true,
             "isNullable": false,
             "sourceColumn": "FirstName",
-            "displayOrdinal": 3
+            "displayOrdinal": 3,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "MiddleName",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "MiddleName",
-            "displayOrdinal": 4
+            "displayOrdinal": 4,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "LastName",
@@ -157,20 +165,6 @@
             "dataType": "string",
             "sourceColumn": "CatalogDescription",
             "displayOrdinal": 2
-          },
-          {
-            "name": "rowguid",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "rowguid",
-            "displayOrdinal": 3
-          },
-          {
-            "name": "ModifiedDate",
-            "dataType": "dateTime",
-            "isNullable": false,
-            "sourceColumn": "ModifiedDate",
-            "displayOrdinal": 4
           }
         ],
         "partitions": [
@@ -199,13 +193,6 @@
             "isNullable": false,
             "sourceColumn": "Description",
             "displayOrdinal": 1
-          },
-          {
-            "name": "ModifiedDate",
-            "dataType": "dateTime",
-            "isNullable": false,
-            "sourceColumn": "ModifiedDate",
-            "displayOrdinal": 3
           },
           {
             "name": "${{<script>alert()</script>}}",
@@ -240,20 +227,23 @@
             "dataType": "string",
             "isNullable": false,
             "sourceColumn": "Name",
-            "displayOrdinal": 1
+            "displayOrdinal": 1,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "ProductNumber",
             "dataType": "string",
             "isNullable": false,
             "sourceColumn": "ProductNumber",
-            "displayOrdinal": 2
+            "displayOrdinal": 2,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "Color",
             "dataType": "string",
             "sourceColumn": "Color",
-            "displayOrdinal": 3
+            "displayOrdinal": 3,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "StandardCost",
@@ -261,13 +251,6 @@
             "isNullable": false,
             "sourceColumn": "StandardCost",
             "displayOrdinal": 4
-          },
-          {
-            "name": "ListPrice",
-            "dataType": "decimal",
-            "isNullable": false,
-            "sourceColumn": "ListPrice",
-            "displayOrdinal": 5
           },
           {
             "name": "Size",
@@ -282,10 +265,11 @@
             "displayOrdinal": 7
           },
           {
-            "name": "ProductCategoryID",
+            "name": "ProductCategoryIDNew",
             "dataType": "int64",
             "sourceColumn": "ProductCategoryID",
-            "displayOrdinal": 8
+            "displayOrdinal": 8,
+            "displayFolder": "MyFolder"
           },
           {
             "name": "ProductModelID",
@@ -317,26 +301,6 @@
             "dataType": "binary",
             "sourceColumn": "ThumbNailPhoto",
             "displayOrdinal": 13
-          },
-          {
-            "name": "ThumbnailPhotoFileName",
-            "dataType": "string",
-            "sourceColumn": "ThumbnailPhotoFileName",
-            "displayOrdinal": 14
-          },
-          {
-            "name": "rowguid",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "rowguid",
-            "displayOrdinal": 15
-          },
-          {
-            "name": "ModifiedDate",
-            "dataType": "dateTime",
-            "isNullable": false,
-            "sourceColumn": "ModifiedDate",
-            "displayOrdinal": 16
           }
         ],
         "partitions": [
@@ -350,27 +314,59 @@
         ],
         "measures": [
           {
-            "name": "measure1",
-            "expression": [
-              "SUM('SalesLT.Customer'[CustomerID])",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
+            "name": "mesColor",
+            "expression": "SUM('SalesLT.Product'[Color])"
+          },
+          {
+            "name": "mesSize",
+            "expression": "SUM('SalesLT.Product'[Size])"
+          },
+          {
+            "name": "mesWeight",
+            "expression": "SUM('SalesLT.Product'[Weight])"
+          },
+          {
+            "name": "sumCoast",
+            "expression": "SUM('SalesLT.Product'[StandardCost])",
+            "displayFolder": "MyFolder"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Category",
+            "displayFolder": "MyFolder",
+            "levels": [
+              {
+                "name": "ProductCategoryID",
+                "ordinal": 0,
+                "column": "ProductCategoryIDNew"
+              },
+              {
+                "name": "ProductID",
+                "ordinal": 1,
+                "column": "ProductID"
+              },
+              {
+                "name": "ProductNumber",
+                "ordinal": 2,
+                "column": "ProductNumber"
+              }
             ]
           },
           {
-            "name": "<sc<script>ript>alert()</sc</script>ript> ",
-            "expression": "<sc<script>ript>alert()</sc</script>ript> "
+            "name": "Category1",
+            "levels": [
+              {
+                "name": "ProductModelID",
+                "ordinal": 0,
+                "column": "ProductModelID"
+              },
+              {
+                "name": "ProductCategoryID123",
+                "ordinal": 1,
+                "column": "ProductCategoryIDNew"
+              }
+            ]
           }
         ]
       },
@@ -397,20 +393,6 @@
             "isNullable": false,
             "sourceColumn": "Culture",
             "displayOrdinal": 2
-          },
-          {
-            "name": "rowguid",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "rowguid",
-            "displayOrdinal": 3
-          },
-          {
-            "name": "ModifiedDate",
-            "dataType": "dateTime",
-            "isNullable": false,
-            "sourceColumn": "ModifiedDate",
-            "displayOrdinal": 4
           }
         ],
         "partitions": [
@@ -418,223 +400,6 @@
             "name": "SalesLT.ProductModelProductDescription",
             "source": {
               "query": "SELECT [ProductModelID],[ProductDescriptionID],[Culture],[rowguid],[ModifiedDate] FROM SalesLT.ProductModelProductDescription",
-              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
-            }
-          }
-        ]
-      },
-      {
-        "name": "SalesLT.vProductModelCatalogDescription",
-        "description": "All data from SalesLT.vProductModelCatalogDescription",
-        "columns": [
-          {
-            "name": "ProductModelID",
-            "dataType": "int64",
-            "isNullable": false,
-            "sourceColumn": "ProductModelID"
-          },
-          {
-            "name": "Name",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "Name",
-            "displayOrdinal": 1
-          },
-          {
-            "name": "Summary",
-            "dataType": "string",
-            "sourceColumn": "Summary",
-            "displayOrdinal": 2
-          },
-          {
-            "name": "Manufacturer",
-            "dataType": "string",
-            "sourceColumn": "Manufacturer",
-            "displayOrdinal": 3
-          },
-          {
-            "name": "Copyright",
-            "dataType": "string",
-            "sourceColumn": "Copyright",
-            "displayOrdinal": 4
-          },
-          {
-            "name": "ProductURL",
-            "dataType": "string",
-            "sourceColumn": "ProductURL",
-            "displayOrdinal": 5
-          },
-          {
-            "name": "WarrantyPeriod",
-            "dataType": "string",
-            "sourceColumn": "WarrantyPeriod",
-            "displayOrdinal": 6
-          },
-          {
-            "name": "WarrantyDescription",
-            "dataType": "string",
-            "sourceColumn": "WarrantyDescription",
-            "displayOrdinal": 7
-          },
-          {
-            "name": "NoOfYears",
-            "dataType": "string",
-            "sourceColumn": "NoOfYears",
-            "displayOrdinal": 8
-          },
-          {
-            "name": "MaintenanceDescription",
-            "dataType": "string",
-            "sourceColumn": "MaintenanceDescription",
-            "displayOrdinal": 9
-          },
-          {
-            "name": "Wheel",
-            "dataType": "string",
-            "sourceColumn": "Wheel",
-            "displayOrdinal": 10
-          },
-          {
-            "name": "Saddle",
-            "dataType": "string",
-            "sourceColumn": "Saddle",
-            "displayOrdinal": 11
-          },
-          {
-            "name": "Pedal",
-            "dataType": "string",
-            "sourceColumn": "Pedal",
-            "displayOrdinal": 12
-          },
-          {
-            "name": "BikeFrame",
-            "dataType": "string",
-            "sourceColumn": "BikeFrame",
-            "displayOrdinal": 13
-          },
-          {
-            "name": "Crankset",
-            "dataType": "string",
-            "sourceColumn": "Crankset",
-            "displayOrdinal": 14
-          },
-          {
-            "name": "PictureAngle",
-            "dataType": "string",
-            "sourceColumn": "PictureAngle",
-            "displayOrdinal": 15
-          },
-          {
-            "name": "PictureSize",
-            "dataType": "string",
-            "sourceColumn": "PictureSize",
-            "displayOrdinal": 16
-          },
-          {
-            "name": "ProductPhotoID",
-            "dataType": "string",
-            "sourceColumn": "ProductPhotoID",
-            "displayOrdinal": 17
-          },
-          {
-            "name": "Material",
-            "dataType": "string",
-            "sourceColumn": "Material",
-            "displayOrdinal": 18
-          },
-          {
-            "name": "Color",
-            "dataType": "string",
-            "sourceColumn": "Color",
-            "displayOrdinal": 19
-          },
-          {
-            "name": "ProductLine",
-            "dataType": "string",
-            "sourceColumn": "ProductLine",
-            "displayOrdinal": 20
-          },
-          {
-            "name": "Style",
-            "dataType": "string",
-            "sourceColumn": "Style",
-            "displayOrdinal": 21
-          },
-          {
-            "name": "RiderExperience",
-            "dataType": "string",
-            "sourceColumn": "RiderExperience",
-            "displayOrdinal": 22
-          },
-          {
-            "name": "rowguid",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "rowguid",
-            "displayOrdinal": 23
-          },
-          {
-            "name": "ModifiedDate",
-            "dataType": "dateTime",
-            "isNullable": false,
-            "sourceColumn": "ModifiedDate",
-            "displayOrdinal": 24
-          }
-        ],
-        "partitions": [
-          {
-            "name": "SalesLT.vProductModelCatalogDescription",
-            "source": {
-              "query": "SELECT [ProductModelID],[Name],[Summary],[Manufacturer],[Copyright],[ProductURL],[WarrantyPeriod],[WarrantyDescription],[NoOfYears],[MaintenanceDescription],[Wheel],[Saddle],[Pedal],[BikeFrame],[Crankset],[PictureAngle],[PictureSize],[ProductPhotoID],[Material],[Color],[ProductLine],[Style],[RiderExperience],[rowguid],[ModifiedDate] FROM SalesLT.vProductModelCatalogDescription",
-              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
-            }
-          }
-        ]
-      },
-      {
-        "name": "SalesLT.vProductAndDescription",
-        "description": "All data from SalesLT.vProductAndDescription",
-        "columns": [
-          {
-            "name": "ProductID",
-            "dataType": "int64",
-            "isNullable": false,
-            "sourceColumn": "ProductID"
-          },
-          {
-            "name": "Name",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "Name",
-            "displayOrdinal": 1
-          },
-          {
-            "name": "ProductModel",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "ProductModel",
-            "displayOrdinal": 2
-          },
-          {
-            "name": "Culture",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "Culture",
-            "displayOrdinal": 3
-          },
-          {
-            "name": "Description",
-            "dataType": "string",
-            "isNullable": false,
-            "sourceColumn": "Description",
-            "displayOrdinal": 4
-          }
-        ],
-        "partitions": [
-          {
-            "name": "SalesLT.vProductAndDescription",
-            "source": {
-              "query": "SELECT [ProductID],[Name],[ProductModel],[Culture],[Description] FROM SalesLT.vProductAndDescription",
               "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
             }
           }
@@ -671,7 +436,9 @@
       },
       {
         "name": "Owner",
-        "value": "up-in-smoke"
+        "value": {
+          "login": "up-in-smoke"
+        }
       }
     ]
   }
